@@ -8,9 +8,15 @@ module default {
         multi link orders -> Order;
     }
 
+    type Category {
+        required property name -> str;
+        multi link products -> Product;
+    }
+
     type Product {
         required property name -> str;
         required property price -> float64;
+        optional link category -> Category;
         multi link orders -> Order;
     }
 
