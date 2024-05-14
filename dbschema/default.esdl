@@ -14,10 +14,16 @@ module default {
         multi link orders -> Order;
     }
 
+    type Salesman {
+        required property name -> str;
+        multi link orders -> Order;
+    }
+
     type Order {
         required property quantity -> int64;
         required link user -> User;
         required link product -> Product;
+        optional link salesman -> Salesman;
         property total -> float64 {
             using (SELECT .product.price * .quantity);
         }
